@@ -7,6 +7,8 @@ const db_config = require('./config/db.config')
 
 const app = express()
 
+app.use(express.json())
+
 mongoose.connect(db_config.DB_URL)
 
 const db = mongoose.connection
@@ -50,6 +52,8 @@ async function init(){
 
 
 }
+
+require('./routes/auth.routes')(app)
 
 app.listen(server_config.PORT,()=>{
     console.log('server is started on port : '+ server_config.PORT)
