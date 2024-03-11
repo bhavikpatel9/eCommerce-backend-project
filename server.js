@@ -4,6 +4,7 @@ const bcryptjs = require('bcryptjs')
 const user_model = require('./models/user.model')
 const server_config = require('./config/server.config')
 const db_config = require('./config/db.config')
+const category_model = require('./models/category.model')
 
 const app = express()
 
@@ -20,6 +21,7 @@ db.on("error",()=>{
 db.once("open",()=>{
     console.log("successfully connected to mongodb")
     init()
+    // dbQueris()
 })
 
 async function init(){
@@ -55,6 +57,13 @@ async function init(){
 
 require('./routes/auth.routes')(app)
 require('./routes/category.routes')(app)
+
+// async function dbQueris(){
+    // const categories = await category_model.find()
+    // console.log(categories)
+
+// }
+
 
 app.listen(server_config.PORT,()=>{
     console.log('server is started on port : '+ server_config.PORT)
