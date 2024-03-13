@@ -57,6 +57,8 @@ async function init(){
 
 require('./routes/auth.routes')(app)
 require('./routes/category.routes')(app)
+require('./routes/product.routes')(app)
+require('./routes/cart.routes')(app)
 
 // async function dbQueris(){
     // const categories = await category_model.find()
